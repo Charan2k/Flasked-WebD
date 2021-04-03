@@ -5,10 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Form</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/style.css')}}">
     <style>
         body{
-            background: url(/images/background.jpg) no-repeat;
+            background: url(/static/images/background.jpg) no-repeat;
             background-size: cover;
         }
     </style>
@@ -40,8 +40,8 @@ Password: <input type="password" name="pass" placeholder="aA@123$"><br>
     </main>
     <footer>
         <nav>
-            <a href="index.html">HomePage</a>
-            <a href="">AboutUs</a>
+            <a href="/">HomePage</a>
+            <a href="#">AboutUs</a>
             <big style="font-family: monospace; color:yellow; word-spacing: 0pt;">&copy; TheCharan</big>
             <select name="contact" id="contact">
                 <option value="default">Contact Us</option>
