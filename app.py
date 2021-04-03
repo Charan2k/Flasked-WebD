@@ -48,4 +48,6 @@ def form():
 @app.route("/db")
 def db():
 	x = mydata("charan","1","56")
-	print(x)
+	database.session.add(x)
+	database.session.commit()
+	return "Domne"
