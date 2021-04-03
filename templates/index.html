@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB DEV Course</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='styles/style.css')}}">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <header>
+        <div class="Header">
+            <h1>Web Dev Tutorial</h1>
+        </div>
+            <nav class="Nav-bar">
+                <a style="padding: 5%;" class="links" href="/table" target="_blank">Tables</pre></a>
+                <a style="padding: 5%;" class="links" href="youtube.html" target="_blank">YoutubeVideos</a>
+                <a style="padding: 5%;" class="links" href="wikipedia.html" target="_blank">Wikipedia</a>
+                <a style="padding: 5%;" class="links" href="form.html" target="_blank">Forms</a>
+            </nav>
+    </header>
+    <main>
+        <section style="color: cornflowerblue;">HEHEHE</section>
+        <article>
+            HEYO WASSUP
+            <hr>
+            <center>
+            <p>
+                Okay... So, this <br>
+                is my first
+                website.
+            </p>
+            </center>
+        </article>
+                <hr>
+                <div class="Content">
+                <img src="{{url_for('static',filename='images/DP.jpg')}}" alt="Apun ka Image" width="45%" height="45%">
+                <video src="{{url_for('static',filename='images/suraj-rapper.mp4')}}" controls=true autoPictureInPicture=true></video>
+                <a href="https://memes.com/" target="_blank" rel="noreferrer"><img height="45%" width="45%" src="{{url_for('static',filename='images/memer_plan.jpg')}}"
+                    alt="Say Hemlo to Memer"></a>
+                <iframe width="45%" height="600px" src="https://www.youtube.com/embed/YRNyamyBOIQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+                </div>
+</main>
+<hr>
+<footer>
+    <nav>
+        <a href="index.html">HomePage</a>
+        <a href="">AboutUs</a>
+            <big style="font-family: monospace; color:yellow; word-spacing: 0pt;">&copy; TheCharan</big>
+            <select name="contact" id="contact">
+                <option value="default">Contact Us</option>
+                <option value="charan@2k.com">Mail</option>
+                <option value="@thecharan316">Instagram</option>
+                <option value="CharanVaddepally">Facebook</option>
+            </select>
+        </nav>
+    </footer>
+    <hr>
+</body>
+
+</html>

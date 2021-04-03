@@ -1,0 +1,77 @@
+
+a:visited{
+    color: yellow;
+}
+.links:hover{
+    color: red;
+}
+nav{
+    background-color: rgb(46, 61, 45);
+    border-style: double;
+    color: grey;
+    word-spacing: 20pt;
+    font-family: monospace;
+    text-align: center;
+    font-size: xx-large;
+}
+.heading{
+    text-align: center;
+    font-size: large;
+    font: bold;
+    color: burlywood;
+    background-color: antiquewhite;
+    font-family: "Lucida Handwriting";
+}
+div{
+    background: black;
+    color: white;
+}
+div:hover{
+    color: yellow;
+    background-color: green;
+}
+span{
+    color: white;
+    background-color: red;
+}
+span:hover{
+    color: antiquewhite;
+    background-color:magenta;
+}
+.gitlink:hover{
+    color: blue;
+}
+article::first-line{
+    color: burlywood;
+}
+p{
+    font-family: "Papyrus";
+    font-size: xx-large;
+}
+h2{
+    color:antiquewhite;
+    background-color: green;
+    font-style: "helvetica";
+    text-align: center;
+}
+.formhead{
+    color: lightpink;
+    background-color: lavenderblush;
+    text-align: center;
+    font-family: Lucida Handwriting;
+}
+
+.Content video, .Content iframe{
+    margin-left: 50px;
+}
+.Content a img, .Content iframe{
+    margin-top: 50px;
+    margin-bottom: 25px;
+}
+.Content video, .Content img{
+    margin-top: 25px;
+}
+video{
+    width: 50%;
+    height: 600px;
+}

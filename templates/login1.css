@@ -1,0 +1,43 @@
+body{
+    background-image: url(/images/background.jpg);
+    background-repeat: no-repeat;
+    position: relative;
+    /* background-position: 50%; */
+    background-size: 150%;
+}
+.login{
+    margin-top: 25%;
+    margin-left: 50%;
+}
+.log{
+    font-family: Arial;
+    text-decoration: underline rgb(35, 85, 126);
+}
+div span{
+    font-family: Helvetica;
+    border-bottom: 1px solid limegreen;
+    padding-top: 10px;
+    padding-bottom: 3px;
+}
+div span input{
+    font-family: Helvetica;
+    border-bottom: 1px solid limegreen;
+    border: none;
+    outline: none;
+    background: none;
+    margin-top: 10px;
+}
+i{
+    width: 10px;
+    padding-right: 5px;
+}
+.button{
+    border-radius: 10px;
+    border: 2px solid limegreen;
+    padding-top: 0px;
+    background: none;
+    width: 100%;
+}
+input[value]{
+    cursor: pointer;
+}
