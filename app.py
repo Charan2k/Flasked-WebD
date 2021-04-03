@@ -45,9 +45,14 @@ def wikipedia():
 def form():
     	return render_template("form.html")
 
-@app.route("/db")
+@app.route("/db",methods=['GET'])
 def db():
 	x = mydata("charan","1","56")
 	database.session.add(x)
 	database.session.commit()
 	return "Domne"
+
+@app.route('/get_details')
+def get_details():
+	r1 = mydata.query.get(1)
+	return render_template("exp.html", name=str(r1.name), roll=str(r1.roll), marks=str(r1.marks))
