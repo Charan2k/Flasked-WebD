@@ -1,5 +1,8 @@
+from re import S
 from flask import Flask
 from flask import render_template
+from flask import Request
+from flask.globals import request 
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -45,14 +48,27 @@ def wikipedia():
 def form():
     	return render_template("form.html")
 
-@app.route("/db",methods=['GET'])
-def db():
-	x = mydata("charan","1","56")
+@app.route("/updated",methods=['GET'])
+def updated():
+	x = mydata(request.args.get("name"), request.args.get("roll"), request.args.get("marks"))
 	database.session.add(x)
 	database.session.commit()
-	return "Domne"
+	# return render_template("exp.html", name=x.name, roll=x.roll, marks=x.marks)
+	return render_template("updated.html")
+
+@app.route("/update")
+def update():
+    	return render_template("update.html")
 
 @app.route('/get_details')
 def get_details():
-	r1 = mydata.query.get(1)
-	return render_template("exp.html", name=str(r1.name), roll=str(r1.roll), marks=str(r1.marks))
+	# x = mydata(request.args.get("name"), request.args.get("roll"), request.args.get("marks"))
+	# database.session.add(x)
+	# database.session.commit()
+	no_of_rows = len(mydata.query.all())
+	res = [[None]]*no_of_rows
+	j = 1
+	vars = ['name', 'roll', 'marks']
+	for i in range(no_of_rows):
+		res[i].append(mydata.query.get(i+1))
+	return render_template("exp.html", no_of_rows = no_of_rows, res=res)
