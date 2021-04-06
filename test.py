@@ -1,4 +1,6 @@
+import re
 from flask import Flask
+from flask.templating import render_template_string
 from flask_sqlalchemy import SQLAlchemy
 app = Flask("test")
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.sqlite"
@@ -20,7 +22,26 @@ class mydata(database.Model):
 database.create_all()
 
 no_of_rows = len(mydata.query.all())
-res = []
+res = [[None]*3]*no_of_rows
+
 for i in range(no_of_rows):
-    res.append(mydata.query.get(i+1)['name'])
-    print(res[i]["name"])
+	j = 0
+	res[i][j] = mydata.query.get(i+1).name
+	j += 1
+	res[i][j] = mydata.query.get(i+1).roll
+	j += 1
+	res[i][j] = mydata.query.get(i+1).marks
+print(res)
+
+
+
+
+# testting 
+no_of_rows = len(mydata.query.all())
+res = [{"name": None,
+		"roll": None,
+		"marks": None}]*no_of_rows
+for i in range(no_of_rows):
+	res[i]["name"] = mydata.query.get(i+1).name
+	res[i]["roll"] = mydata.query.get(i+1).roll
+	res[i]["marks"] = mydata.query.get(i+1).marks

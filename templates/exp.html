@@ -39,11 +39,16 @@
 
         {% for i in range(no_of_rows) %}
         <tr>
-            <td>{{i}}</td>
-            <td>{{i}}</td>
-            <td>{{i}}</td>
+            <td>{{ res[i][0] }}</td>
+            <td>{{ res[i][1] }}</td>
+            <td>{{ res[i][2] }}</td>
         </tr>
         {% endfor %}
+        <tr>
+            <td>hello</td>
+            <td>world</td>
+            <td>Kemcho</td>
+        </tr>
     </table>
 </body>
 </html>

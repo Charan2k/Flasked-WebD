@@ -9,7 +9,6 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask("myapp")
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///static/database/mydata.sqlite"
 
-
 database = SQLAlchemy(app)
 
 
@@ -66,9 +65,13 @@ def get_details():
 	# database.session.add(x)
 	# database.session.commit()
 	no_of_rows = len(mydata.query.all())
-	res = [[None]]*no_of_rows
-	j = 1
-	vars = ['name', 'roll', 'marks']
+	res = [[None]*3]*no_of_rows
 	for i in range(no_of_rows):
-		res[i].append(mydata.query.get(i+1))
+		j = 0
+		res[i][j] = mydata.query.get(i+1).name
+		j += 1
+		res[i][j] = mydata.query.get(i+1).roll
+		j += 1
+		res[i][j] = mydata.query.get(i+1).marks
+	database.session.commit()
 	return render_template("exp.html", no_of_rows = no_of_rows, res=res)
