@@ -1,20 +1,19 @@
 from flask import Flask
 from flask import render_template
+from flask import Request
+from flask import redirect
+from flask.globals import request 
 from flask_sqlalchemy import SQLAlchemy
-
 
 app = Flask("myapp")
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///static/database/mydata.sqlite"
 
-
 database = SQLAlchemy(app)
-
-
 class mydata(database.Model):
 	id = database.Column(database.Integer, primary_key = True)
-	name = database.Column(database.Text)
-	roll = database.Column(database.Text)
-	marks = database.Column(database.Text)
+	name = database.Column(database.String(30))
+	roll = database.Column(database.Integer)
+	marks = database.Column(database.Integer)
 
 
 	def __init__(self, name, roll, marks):
@@ -22,16 +21,20 @@ class mydata(database.Model):
 		self.roll = roll
 		self.marks = marks
 
-database.create_all()
-
 
 @app.route("/")
 def index():
-    	return render_template("index.html")
+    	rows = mydata.query.all()
+    	return render_template("index.html",rows=rows)
 
-@app.route("/table")
+@app.route("/table", methods=["GET","POST"])
 def table():
-    	return render_template("table.html")
+	if request.method == "GET":
+		x = mydata(request.args.get('name'), request.args.get('roll'), request.args.get('marks'))
+		database.session.add(x)
+		database.session.commit() 
+	rows = mydata.query.all()
+	return render_template("table.html", rows=rows)
 
 @app.route("/youtube")
 def youtube():
@@ -45,14 +48,15 @@ def wikipedia():
 def form():
     	return render_template("form.html")
 
-@app.route("/db",methods=['GET'])
-def db():
-	x = mydata("charan","1","56")
-	database.session.add(x)
-	database.session.commit()
-	return "Domne"
-
 @app.route('/get_details')
-def get_details():
-	r1 = mydata.query.get(1)
-	return render_template("exp.html", name=str(r1.name), roll=str(r1.roll), marks=str(r1.marks))
+def get_details():		
+	rows = mydata.query.all()
+	return render_template("table.html", rows=rows)
+
+@app.route('/update')
+def update():
+	return render_template('details.html')
+
+if __name__ == '__main__':
+	app.run(debug=True)
+	database.create_all()

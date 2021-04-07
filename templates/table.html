@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Table</title>
-    <link rel="stylesheet" href="{{url_for('static',filename='styles/table.css')}}">
+    <title>Student Details</title>
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='styles/table.css')}}"> -->
     <style>
+        header{
+            position: sticky;
+            text-align: center;
+            background: antiquewhite;
+            border: 10px solid green;
+        }
         footer{
-            position: absolute;
+            position: sticky;
             bottom: 1px;
             right: 1px;
             left: 1px;
@@ -21,54 +27,76 @@
             font-size: xx-large;
             width: 99%;
         }
+        .details{
+            width: 40%;
+            margin-top: 1%;
+            margin-left: 25%;
+            font-size: 20px;
+            font-weight: 100;
+            font-family: monospace;
+        }
+        .details tr th{
+            border: 1px solid red;
+            column-width: 50px;
+            background-color: pink;
+            padding: 0% 5%;
+        }
+        .details tr td{
+            border: 1px solid green;
+            background-color: lightgreen;
+            padding: 0% 5%;
+            text-align: center;
+            max-width: fit-content;
+        }
+        .btn{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-left: 25%;
+            height: 50px;
+            width: 40%;
+            background: none;
+            outline: none;
+            border: 1px solid red;
+            font-size: 20px;
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     <header>
-        <h1>Welcome to My Tables</h1>
+        <h1>STUDENT DETAILS</h1>
     </header>
     <main>
-        <table align="left">
-            <thead>
-                <tr>
-                    <th><pre><big>Roll </big></pre></th>   
-                    <th><pre><big>Name </big> </pre></th>   
-                    <th><pre><big> Marks </big></pre></th>  
-                    <hr>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>501</td>
-                    <td>Akash</td>
-                    <td>90</td>
-                </tr>
-                <tr>
-                    <td>502</td>
-                    <td>Sharan</td>
-                    <td>96</td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>509</td>
-                    <td>Karthik</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>505</td>
-                    <td>Charan</td>
-                    <td>69.69</td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td>547</td>
-                    <td>Sarvana</td>
-                    <td>96.96</td>
-                </tr>
-                </tr>
-            </tbody>
+        <table class="details">
+            <tr>
+                <th>Sno.</th>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Marks</th>
+            </tr>
+    
+            {% for i in rows %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.roll }}</td>
+                <td>{{ i.marks }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>hello</td>
+                <td>world</td>
+                <td>Kemcho</td>
+                <td>Lulll</td>
+            </tr>
         </table>
+        <a href="/update"><input type="submit" value="Update" class="btn"></a>
     </main>
     <footer>
         <!-- <nav> -->
