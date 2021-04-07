@@ -1,7 +1,7 @@
-from re import S
 from flask import Flask
 from flask import render_template
 from flask import Request
+from flask import redirect
 from flask.globals import request 
 from flask_sqlalchemy import SQLAlchemy
 
@@ -24,11 +24,17 @@ class mydata(database.Model):
 
 @app.route("/")
 def index():
-    	return render_template("index.html")
+    	rows = mydata.query.all()
+    	return render_template("index.html",rows=rows)
 
-@app.route("/table")
+@app.route("/table", methods=["GET","POST"])
 def table():
-    	return render_template("table.html")
+	if request.method == "GET":
+		x = mydata(request.args.get('name'), request.args.get('roll'), request.args.get('marks'))
+		database.session.add(x)
+		database.session.commit() 
+	rows = mydata.query.all()
+	return render_template("table.html", rows=rows)
 
 @app.route("/youtube")
 def youtube():
@@ -42,24 +48,15 @@ def wikipedia():
 def form():
     	return render_template("form.html")
 
-@app.route("/updated",methods=['GET'])
-def updated():
-	for i in range(10):
-		x = mydata(request.args.get("name"), request.args.get("roll"), request.args.get("marks"))
-		database.session.add(x)
-	database.session.commit()
-	# return render_template("exp.html", name=x.name, roll=x.roll, marks=x.marks)
-	return render_template("updated.html")
-
-@app.route("/update")
-def update():
-    	return render_template("update.html")
-
 @app.route('/get_details')
 def get_details():		
 	rows = mydata.query.all()
-	return render_template("exp.html", rows=rows)
+	return render_template("table.html", rows=rows)
 
+@app.route('/update')
+def update():
+	return render_template('details.html')
 
 if __name__ == '__main__':
 	app.run(debug=True)
+	database.create_all()

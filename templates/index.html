@@ -27,8 +27,9 @@
             <thead>
                 <tr>
                     <th>Sno.</th>
-                    <th>Roll</th>
                     <th>Name</th>
+                    <th>Roll</th>
+                    <th>Marks</th>
                 </tr>
             </thead>
             <tbody>
@@ -37,11 +38,12 @@
                         <td>{{loop.index}}</td>
                         <td>{{x.name}}</td>
                         <td>{{x.roll}}</td>
+                        <td>{{x.marks}}</td>
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
-        <a href="/get_details"><input type="submit" value="Submit"></a>
+        <a href="/get_details"><input type="submit" value="GET DETAILS"></a>
     </main>
 <hr>
 <footer>
