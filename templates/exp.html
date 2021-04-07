@@ -37,11 +37,11 @@
             <th>Marks</th>
         </tr>
 
-        {% for i in range(no_of_rows) %}
+        {% for i in rows %}
         <tr>
-            <td>{{ res[i][0] }}</td>
-            <td>{{ res[i][1] }}</td>
-            <td>{{ res[i][2] }}</td>
+            <td>{{ rows.name }}</td>
+            <td>{{ rows.roll }}</td>
+            <td>{{ rows.marks }}</td>
         </tr>
         {% endfor %}
         <tr>

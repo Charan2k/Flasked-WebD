@@ -5,13 +5,10 @@ from flask import Request
 from flask.globals import request 
 from flask_sqlalchemy import SQLAlchemy
 
-
 app = Flask("myapp")
 app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///static/database/mydata.sqlite"
 
 database = SQLAlchemy(app)
-
-
 class mydata(database.Model):
 	id = database.Column(database.Integer, primary_key = True)
 	name = database.Column(database.Text)
@@ -23,8 +20,6 @@ class mydata(database.Model):
 		self.name = name
 		self.roll = roll
 		self.marks = marks
-
-database.create_all()
 
 
 @app.route("/")
@@ -49,8 +44,9 @@ def form():
 
 @app.route("/updated",methods=['GET'])
 def updated():
-	x = mydata(request.args.get("name"), request.args.get("roll"), request.args.get("marks"))
-	database.session.add(x)
+	for i in range(10):
+		x = mydata(request.args.get("name"), request.args.get("roll"), request.args.get("marks"))
+		database.session.add(x)
 	database.session.commit()
 	# return render_template("exp.html", name=x.name, roll=x.roll, marks=x.marks)
 	return render_template("updated.html")
@@ -61,17 +57,11 @@ def update():
 
 @app.route('/get_details')
 def get_details():
-	# x = mydata(request.args.get("name"), request.args.get("roll"), request.args.get("marks"))
-	# database.session.add(x)
-	# database.session.commit()
-	no_of_rows = len(mydata.query.all())
-	res = [[None]*3]*no_of_rows
-	for i in range(no_of_rows):
-		j = 0
-		res[i][j] = mydata.query.get(i+1).name
-		j += 1
-		res[i][j] = mydata.query.get(i+1).roll
-		j += 1
-		res[i][j] = mydata.query.get(i+1).marks
-	database.session.commit()
-	return render_template("exp.html", no_of_rows = no_of_rows, res=res)
+    for i in range(10):
+    	x = mydata("Charan", )			
+	rows = mydata.query.all()
+	return render_template("exp.html", rows=rows)
+
+
+if __name__ == '__main__':
+	app.run(debug=True)

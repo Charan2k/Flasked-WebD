@@ -22,33 +22,31 @@
                 <a style="padding: 5%;" class="links" href="/form" target="_blank">Forms</a>
             </nav>
     </header>
-    <main>
-        <section style="color: cornflowerblue;">HEHEHE</section>
-        <article>
-            HEYO WASSUP
-            <hr>
-            <center>
-            <p>
-                Okay... So, this <br>
-                is my first
-                website.
-            </p>
-            </center>
-        </article>
-                <hr>
-                <div class="Content">
-                <img src="{{url_for('static',filename='images/DP.jpg')}}" alt="Apun ka Image" width="45%" height="45%">
-                <video src="{{url_for('static',filename='images/suraj-rapper.mp4')}}" controls=true autoPictureInPicture=true></video>
-                <a href="https://memes.com/" target="_blank" rel="noreferrer"><img height="45%" width="45%" src="{{url_for('static',filename='images/memer_plan.jpg')}}"
-                    alt="Say Hemlo to Memer"></a>
-                <iframe width="45%" height="600px" src="https://www.youtube.com/embed/YRNyamyBOIQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
-                </iframe>
-                </div>
-</main>
+    <main>   
+        <table>
+            <thead>
+                <tr>
+                    <th>Sno.</th>
+                    <th>Roll</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for x in rows %}
+                    <tr>
+                        <td>{{loop.index}}</td>
+                        <td>{{x.name}}</td>
+                        <td>{{x.roll}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="/get_details"><input type="submit" value="Submit"></a>
+    </main>
 <hr>
 <footer>
     <nav>
-        <a href="index.html">HomePage</a>
+        <a href="/">HomePage</a>
         <a href="">AboutUs</a>
             <big style="font-family: monospace; color:yellow; word-spacing: 0pt;">&copy; TheCharan</big>
             <select name="contact" id="contact">
