@@ -21,6 +21,27 @@
             font-size: xx-large;
             width: 99%;
         }
+        .details{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 100;
+            font-family: monospace;
+        }
+        .details tr th{
+            border: 1px solid red;
+            column-width: 50px;
+            background-color: pink;
+            padding: 0% 5%;
+        }
+        .details tr td{
+            border: 1px solid green;
+            background-color: lightgreen;
+            padding: 0% 5%;
+            text-align: center;
+            max-width: fit-content;
+        }
     </style>
 </head>
 <body>
@@ -28,46 +49,25 @@
         <h1>Welcome to My Tables</h1>
     </header>
     <main>
-        <table align="left">
-            <thead>
-                <tr>
-                    <th><pre><big>Roll </big></pre></th>   
-                    <th><pre><big>Name </big> </pre></th>   
-                    <th><pre><big> Marks </big></pre></th>  
-                    <hr>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>501</td>
-                    <td>Akash</td>
-                    <td>90</td>
-                </tr>
-                <tr>
-                    <td>502</td>
-                    <td>Sharan</td>
-                    <td>96</td>
-                </tr>
-                <tr>
-                    <th>3</th>
-                    <td>509</td>
-                    <td>Karthik</td>
-                    <td>100</td>
-                </tr>
-                <tr>
-                    <th>4</th>
-                    <td>505</td>
-                    <td>Charan</td>
-                    <td>69.69</td>
-                </tr>
-                <tr>
-                    <th>5</th>
-                    <td>547</td>
-                    <td>Sarvana</td>
-                    <td>96.96</td>
-                </tr>
-                </tr>
-            </tbody>
+        <table class="details">
+            <tr>
+                <th>Name</th>
+                <th>Roll</th>
+                <th>Marks</th>
+            </tr>
+    
+            {% for i in rows %}
+            <tr>
+                <td>{{ rows.name }}</td>
+                <td>{{ rows.roll }}</td>
+                <td>{{ rows.marks }}</td>
+            </tr>
+            {% endfor %}
+            <tr>
+                <td>hello</td>
+                <td>world</td>
+                <td>Kemcho</td>
+            </tr>
         </table>
     </main>
     <footer>

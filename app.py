@@ -11,9 +11,9 @@ app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///static/database/mydata.sqlite
 database = SQLAlchemy(app)
 class mydata(database.Model):
 	id = database.Column(database.Integer, primary_key = True)
-	name = database.Column(database.Text)
-	roll = database.Column(database.Text)
-	marks = database.Column(database.Text)
+	name = database.Column(database.String(30))
+	roll = database.Column(database.Integer)
+	marks = database.Column(database.Integer)
 
 
 	def __init__(self, name, roll, marks):
@@ -56,9 +56,7 @@ def update():
     	return render_template("update.html")
 
 @app.route('/get_details')
-def get_details():
-    for i in range(10):
-    	x = mydata("Charan", )			
+def get_details():		
 	rows = mydata.query.all()
 	return render_template("exp.html", rows=rows)
 
