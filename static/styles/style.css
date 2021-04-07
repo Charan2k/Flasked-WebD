@@ -75,3 +75,17 @@ video{
     width: 50%;
     height: 600px;
 }
+footer{
+    position: sticky;
+    bottom: 1px;
+    right: 1px;
+    left: 1px;
+    background-color: rgb(46, 61, 45);
+    border-style: double;
+    color: grey;
+    word-spacing: 20pt;
+    font-family: monospace;
+    text-align: center;
+    font-size: xx-large;
+    width: 99%;
+}
